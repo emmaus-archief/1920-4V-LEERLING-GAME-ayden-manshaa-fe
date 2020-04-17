@@ -110,7 +110,7 @@ var beweegKogel = function() {
  */
 var beweegSpeler = function() {
 if keyIsPressed {
-    spelerX=spelerX+5;             //key?? of nummer van pijltjes 
+    spelerX=spelerX+2;             //key?? of nummer van pijltjes 
 };
 };
 
