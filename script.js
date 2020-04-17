@@ -79,8 +79,12 @@ var tekenKogel = function(x, y) {
  * @param {number} y y-coördinaat
  */
 var tekenSpeler = function(x, y) {
-  fill("white");
-  ellipse(x, y, 50, 50);
+  fill(20,230,230);
+  ellipse(spelerX,    spelerY   , 50, 50); //hoofd
+  ellipse(spelerX-25, spelerY+25, 20, 20); //oog links
+  ellipse(spelerX+25, spelerY+25, 20, 20); //oog rechts
+  ellipse(spelerX,    spelerY-25, 75, 20); //mond
+
 };
 
 
@@ -105,7 +109,9 @@ var beweegKogel = function() {
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
-
+if keyIsPressed {
+    spelerX=spelerX+5;             //key?? of nummer van pijltjes 
+};
 };
 
 
