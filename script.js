@@ -110,12 +110,14 @@ var beweegKogel = function() {
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
-if keyIsPressed (39){
+if (keyIsDown(39)) { // 39=right arrow
     if (spelerX<375 && spelerX>25) {
         spelerX=spelerX+2;
-        else (spelerX=spelerX+0);
+    }
+        else {
+            (spelerX=spelerX+0);
+        }
     };
-};
 };
 
 
