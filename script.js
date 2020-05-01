@@ -8,7 +8,7 @@
 
    Begin met dit template voor je game opdracht,
    voeg er je eigen code aan toe.
- */
+ */                    
 
 
 
@@ -81,6 +81,7 @@ var tekenKogel = function(x, y) {
 var tekenSpeler = function(x, y) {
   fill(20,230,230);
   ellipse(spelerX,    spelerY   , 50, 50); //hoofd
+  fill(200,30,30);
   ellipse(spelerX-25, spelerY+25, 20, 20); //oog links
   ellipse(spelerX+25, spelerY+25, 20, 20); //oog rechts
   ellipse(spelerX,    spelerY-25, 75, 20); //mond
@@ -105,14 +106,22 @@ var beweegKogel = function() {
 
 
 /**
- * Kijkt wat de toetsen/muis etc zijn.
+ * Kijkt wat de toetsen/muis etc zijn.    https://keycode.info/   is website voor codes
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
-if keyIsPressed {
-    spelerX=spelerX+2;             //key?? of nummer van pijltjes 
+if keyIsPressed (39){
+    if (spelerX<375 && spelerX>25) {
+        spelerX=spelerX+2;
+        else (spelerX=spelerX+0);
+    };
 };
 };
+
+
+
+
+
 
 
 /**
