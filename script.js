@@ -110,14 +110,38 @@ var beweegKogel = function() {
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
-if (keyIsDown(39)) { // 39=right arrow
-    if (spelerX<375 && spelerX>25) {
-        spelerX=spelerX+2;
-    }
-        else {
-            (spelerX=spelerX+0);
-        }
-    };
+if (keyIsDown(39) && spelerX < 1220)
+
+spelerX = spelerX + 3;
+
+else 
+
+spelerX = spelerX + 0;
+
+if (keyIsDown(37) && spelerX > 60)
+
+spelerX = spelerX - 3;
+    
+
+else 
+
+spelerX = spelerX - 0;
+
+if (keyIsDown(40) && spelerY < 660)
+
+spelerY = spelerY + 3;
+
+else
+
+spelerY = spelerY + 0;
+
+if (keyIsDown(38) && spelerY > 60)
+
+spelerY = spelerY - 3;
+
+else
+
+spelerY = spelerY - 0;
 };
 
 
