@@ -50,17 +50,15 @@ var tekenVeld = function () {
   rect(20, 20, width - 2 * 20, height - 2 * 20);
 };
 
-
-/**
- * Tekent de vijand
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
- */
 var tekenVijand = function(x, y) {
-    
+  fill(20,230,230);
+  ellipse(vijandX,    vijandY   , 50, 50); //hoofd
+  fill(200,30,30);
+  ellipse(vijandX-25, vijandY+25, 20, 20); //oog links
+  ellipse(vijandX+25, vijandY+25, 20, 20); //oog rechts
+  ellipse(vijandX,    vijandY-25, 75, 20); //mond
 
 };
-
 
 /**
  * Tekent de kogel of de bal
@@ -68,10 +66,12 @@ var tekenVijand = function(x, y) {
  * @param {number} y y-coördinaat
  */
 var tekenKogel = function(x, y) {
-
-
-};
-
+if (kogelX < 1200 && kogelY < 650 && kogelX > 50 && kogelY > 50)
+    function draw() {
+        fill (255, 255, 255);
+    ellipse(x, y, 10, 10);
+    }
+}
 
 /**
  * Tekent de speler
@@ -88,12 +88,42 @@ var tekenSpeler = function(x, y) {
 
 };
 
-
 /**
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
 var beweegVijand = function() {
+if (keyIsDown(68) && spelerX < 1220)
+
+vijandX = vijandX + 3;
+
+else 
+
+vijandX = vijandX + 0;
+
+if (keyIsDown(65) && spelerX > 60)
+
+vijandX = vijandX - 3;
     
+
+else 
+
+vijandX = vijandX - 0;
+
+if (keyIsDown(83) && spelerY < 660)
+
+vijandY = vijandY + 3;
+
+else
+
+vijandY = vijandY + 0;
+
+if (keyIsDown(87) && spelerY > 60)
+
+vijandY = vijandY - 3;
+
+else
+
+vijandY = vijandY - 0;
 };
 
 
@@ -228,3 +258,4 @@ function draw() {
       break;
   }
 }
+
