@@ -72,6 +72,22 @@ var tekenKogel = function(x, y) {
 
 };
 
+var imgA=0
+var imgB=0
+
+
+function preload() {
+  imgA = loadImage('lion.jpg'); 
+  imgB = loadImage('zebra.png');
+}
+
+
+function draw() {
+  image(imgA, spelerX, spelerY, 800, 450); 
+  image(imgB, vijandX, vijandY, 50, 50); 
+}
+
+
 
 /**
  * Tekent de speler
@@ -79,12 +95,7 @@ var tekenKogel = function(x, y) {
  * @param {number} y y-coördinaat
  */
 var tekenSpeler = function(x, y) {
-  fill(20,230,230);
-  ellipse(spelerX,    spelerY   , 50, 50); //hoofd
-  fill(200,30,30);
-  ellipse(spelerX-25, spelerY+25, 20, 20); //oog links
-  ellipse(spelerX+25, spelerY+25, 20, 20); //oog rechts
-  ellipse(spelerX,    spelerY-25, 75, 20); //mond
+  
 
 };
 
