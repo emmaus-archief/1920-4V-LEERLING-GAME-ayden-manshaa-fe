@@ -72,8 +72,8 @@ var tekenKogel = function(x, y) {
 
 };
 
-var imgA=0
-var imgB=0
+var imgA=0;
+var imgB=0;
 
 
 function preload() {
@@ -82,10 +82,7 @@ function preload() {
 }
 
 
-function draw() {
-  image(imgA, spelerX, spelerY, 800, 450); 
-  image(imgB, vijandX, vijandY, 50, 50); 
-}
+
 
 
 
@@ -232,6 +229,11 @@ function draw() {
       tekenVijand(vijandX, vijandY);
       tekenKogel(kogelX, kogelY);
       tekenSpeler(spelerX, spelerY);
+
+
+  image(imgA, spelerX, spelerY, 800, 450); 
+  image(imgB, vijandX, vijandY, 50, 50); 
+
 
       if (checkGameOver()) {
         spelStatus = GAMEOVER;
