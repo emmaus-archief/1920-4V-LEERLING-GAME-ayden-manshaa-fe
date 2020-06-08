@@ -8,7 +8,7 @@
 
    Begin met dit template voor je game opdracht,
    voeg er je eigen code aan toe.
- */
+ */                    
 
 
 
@@ -46,21 +46,19 @@ var score = 0; // aantal behaalde punten
  * Tekent het speelveld
  */
 var tekenVeld = function () {
-  fill("purple");
+  fill("yellow");
   rect(20, 20, width - 2 * 20, height - 2 * 20);
 };
 
-
-/**
- * Tekent de vijand
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
- */
 var tekenVijand = function(x, y) {
-    
+  fill(20,230,230);
+  ellipse(vijandX,    vijandY   , 50, 50); //hoofd
+  fill(200,30,30);
+  ellipse(vijandX-25, vijandY+25, 20, 20); //oog links
+  ellipse(vijandX+25, vijandY+25, 20, 20); //oog rechts
+  ellipse(vijandX,    vijandY-25, 75, 20); //mond
 
 };
-
 
 /**
  * Tekent de kogel of de bal
@@ -68,10 +66,12 @@ var tekenVijand = function(x, y) {
  * @param {number} y y-coördinaat
  */
 var tekenKogel = function(x, y) {
-
-
-};
-
+if (kogelX < 1200 && kogelY < 650 && kogelX > 50 && kogelY > 50)
+    function draw() {
+        fill (255, 255, 255);
+    ellipse(x, y, 10, 10);
+    }
+}
 
 /**
  * Tekent de speler
@@ -79,16 +79,51 @@ var tekenKogel = function(x, y) {
  * @param {number} y y-coördinaat
  */
 var tekenSpeler = function(x, y) {
-  fill("white");
-  ellipse(x, y, 50, 50);
-};
+  fill(20,230,230);
+  ellipse(spelerX,    spelerY   , 50, 50); //hoofd
+  fill(200,30,30);
+  ellipse(spelerX-25, spelerY+25, 20, 20); //oog links
+  ellipse(spelerX+25, spelerY+25, 20, 20); //oog rechts
+  ellipse(spelerX,    spelerY-25, 75, 20); //mond
 
+};
 
 /**
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
 var beweegVijand = function() {
+if (keyIsDown(68) && spelerX < 1220)
+
+vijandX = vijandX + 3;
+
+else 
+
+vijandX = vijandX + 0;
+
+if (keyIsDown(65) && spelerX > 60)
+
+vijandX = vijandX - 3;
     
+
+else 
+
+vijandX = vijandX - 0;
+
+if (keyIsDown(83) && spelerY < 660)
+
+vijandY = vijandY + 3;
+
+else
+
+vijandY = vijandY + 0;
+
+if (keyIsDown(87) && spelerY > 60)
+
+vijandY = vijandY - 3;
+
+else
+
+vijandY = vijandY - 0;
 };
 
 
@@ -101,12 +136,48 @@ var beweegKogel = function() {
 
 
 /**
- * Kijkt wat de toetsen/muis etc zijn.
+ * Kijkt wat de toetsen/muis etc zijn.    https://keycode.info/   is website voor codes
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
+if (keyIsDown(39) && spelerX < 1220)
 
+spelerX = spelerX + 3;
+
+else 
+
+spelerX = spelerX + 0;
+
+if (keyIsDown(37) && spelerX > 60)
+
+spelerX = spelerX - 3;
+    
+
+else 
+
+spelerX = spelerX - 0;
+
+if (keyIsDown(40) && spelerY < 660)
+
+spelerY = spelerY + 3;
+
+else
+
+spelerY = spelerY + 0;
+
+if (keyIsDown(38) && spelerY > 60)
+
+spelerY = spelerY - 3;
+
+else
+
+spelerY = spelerY - 0;
 };
+
+
+
+
+
 
 
 /**
@@ -187,3 +258,4 @@ function draw() {
       break;
   }
 }
+
