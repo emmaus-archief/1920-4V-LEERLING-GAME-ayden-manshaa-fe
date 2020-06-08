@@ -77,8 +77,8 @@ var imgB=0;
 
 
 function preload() {
-  imgA = loadImage('lion.jpg'); 
-  imgB = loadImage('zebra.png');
+  imgA = loadImage('./afbeeldingen/lion.png'); 
+  imgB = loadImage('./afbeeldingen/zebra.png');
 }
 
 
