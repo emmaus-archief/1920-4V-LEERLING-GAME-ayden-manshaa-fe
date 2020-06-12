@@ -73,18 +73,30 @@ if (kogelX < 1200 && kogelY < 650 && kogelX > 50 && kogelY > 50)
     }
 }
 
+
+};
+
+var imgA=0;
+var imgB=0;
+
+
+function preload() {
+  imgA = loadImage('./afbeeldingen/lion.png'); 
+  imgB = loadImage('./afbeeldingen/zebra.png');
+}
+
+
+
+
+
+
 /**
  * Tekent de speler
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
 var tekenSpeler = function(x, y) {
-  fill(20,230,230);
-  ellipse(spelerX,    spelerY   , 50, 50); //hoofd
-  fill(200,30,30);
-  ellipse(spelerX-25, spelerY+25, 20, 20); //oog links
-  ellipse(spelerX+25, spelerY+25, 20, 20); //oog rechts
-  ellipse(spelerX,    spelerY-25, 75, 20); //mond
+  
 
 };
 
@@ -251,6 +263,11 @@ function draw() {
       tekenVijand(vijandX, vijandY);
       tekenKogel(kogelX, kogelY);
       tekenSpeler(spelerX, spelerY);
+
+
+  image(imgA, spelerX, spelerY, 800, 450); 
+  image(imgB, vijandX, vijandY, 50, 50); 
+
 
       if (checkGameOver()) {
         spelStatus = GAMEOVER;
