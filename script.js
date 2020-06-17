@@ -85,12 +85,7 @@ function preload() {
 }
 
 var tekenSpeler = function(x, y) {
-  fill(20,230,230);
-  ellipse(spelerX,    spelerY   , 50, 50); //hoofd
-  fill(200,30,30);
-  ellipse(spelerX-25, spelerY+25, 20, 20); //oog links
-  ellipse(spelerX+25, spelerY+25, 20, 20); //oog rechts
-  ellipse(spelerX,    spelerY-25, 75, 20); //mond
+  
 
 };
 
@@ -260,8 +255,10 @@ function draw() {
       tekenKogel(kogelX, kogelY);
       tekenSpeler(spelerX, spelerY);
 
-        image(imgA, spelerX, spelerY, 800, 450); 
-        image(imgB, vijandX, vijandY, 50, 50); 
+
+  image(imgA, spelerX, spelerY, 800, 450); 
+  image(imgB, vijandX, vijandY, 50, 50); 
+
 
       if (checkGameOver()) {
         spelStatus = GAMEOVER;
