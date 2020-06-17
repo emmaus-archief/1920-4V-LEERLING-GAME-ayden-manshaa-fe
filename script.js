@@ -82,9 +82,7 @@ var tekenVijand = function(x,  y) {
   ellipse(vijandX+25, vijandY+25, 20, 20); //oog rechts
   ellipse(vijandX,    vijandY-25, 75, 20); //mond
   */
-   image(imgV, x-25, y-25, 50, 50);
-   fill("red");
-   ellipse(x,y,10,10); 
+   image(imgV, x-25, y-25, 50, 50); 
 }
 
 /**
@@ -93,9 +91,7 @@ var tekenVijand = function(x,  y) {
  * @param {number} y y-coördinaat
  */
 var tekenSpeler = function(x, y) {
-   image(imgS, x-25, y-25, 50, 50);
-   fill("red");
-   ellipse(x,y,10,10); 
+   image(imgS, x-25, y-25, 50, 50); 
 };
 
 /**
