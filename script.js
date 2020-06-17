@@ -33,8 +33,8 @@ var vijandY = 100;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
 
-var imgA=0;
-var imgB=0;
+var imgS=0;
+var imgV=0;
 
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
@@ -48,6 +48,16 @@ var tekenVeld = function () {
   fill("yellow");
   rect(20, 20, width - 2 * 20, height - 2 * 20);
 };
+
+/**
+ * Tekent eindscherm
+ */
+var tekenEindScherm = function () {
+  fill("purple");
+  textSize(30);
+  text("Game Over, druk op reload om opnieuw te spelen", 100, 400);
+};
+
 
 /**
  * Tekent de kogel of de bal
@@ -72,8 +82,10 @@ var tekenVijand = function(x,  y) {
   ellipse(vijandX+25, vijandY+25, 20, 20); //oog rechts
   ellipse(vijandX,    vijandY-25, 75, 20); //mond
   */
-  image(imgB, x, y, 50, 50); 
-};
+   image(imgV, x-25, y-25, 50, 50);
+   fill("red");
+   ellipse(x,y,10,10); 
+}
 
 /**
  * Tekent de speler
@@ -81,7 +93,9 @@ var tekenVijand = function(x,  y) {
  * @param {number} y y-coördinaat
  */
 var tekenSpeler = function(x, y) {
-   image(imgA, x, y, 800, 450); 
+   image(imgS, x-25, y-25, 50, 50);
+   fill("red");
+   ellipse(x,y,10,10); 
 };
 
 /**
@@ -162,7 +176,13 @@ var checkSpelerGeraakt = function() {
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function() {
-    
+    if (((spelerX - vijandX) < 50 ) && 
+        ((spelerX - vijandX) > -50) &&
+        ((spelerY - vijandY) < 50) &&
+        ((spelerY - vijandY) > -50)) {
+            return true;
+        }
+        
   return false;
 };
 
@@ -172,8 +192,8 @@ var checkGameOver = function() {
  * de p5 library, voordat setup wordt aangeroepen
  */
 function preload() {
-  imgA = loadImage("afbeeldingen/lion.png"); 
-  imgB = loadImage("afbeeldingen/zebra.png");
+  imgS = loadImage("afbeeldingen/lion.png"); 
+  imgV = loadImage("afbeeldingen/zebra.png");
 }
 
 /**
@@ -221,6 +241,7 @@ function draw() {
 
       if (checkGameOver()) {
         spelStatus = GAMEOVER;
+        tekenEindScherm();
       }
       break;
   }
