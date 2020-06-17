@@ -22,14 +22,15 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
-var spelerX = 200; // x-positie van speler
-var spelerY = 100; // y-positie van speler
+var spelerX = 200; // x-positie van speler zebra
+var spelerY = 100; // y-positie van speler zebra
+var spelerSnelheid = 3;
 
-var kogelX = 0;    // x-positie van kogel
-var kogelY = 0;    // y-positie van kogel
+var voerX = 0;    // x-positie van zebraVoer
+var voerY = 0;    // y-positie van zebraVoer
 
-var vijandX = 50;   // x-positie van vijand
-var vijandY = 100;   // y-positie van vijand
+var vijandX = 50;   // x-positie van vijand leeuw
+var vijandY = 100;   // y-positie van vijand leeuw
 
 var score = 10; // aantal behaalde punten, telt af met de tijd (seconden)
 
@@ -66,12 +67,13 @@ var tekenZebraWint = function () {
 };
 
 /**
- * Tekent de kogel of de bal
+ * Tekent voer
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
-var tekenKogel = function(x, y) {
-
+var tekenZebraVoer = function(x, y) {
+  fill("black");
+  ellipse(x,y,20,20);
 }
 
 /**
@@ -123,10 +125,11 @@ var beweegVijand = function() {
 
 
 /**
- * Updatet globale variabelen met positie van kogel of bal
+ * Updatet globale variabelen met positie van voer
  */
-var beweegKogel = function() {
-
+var plaatsZebraVoer = function() { 
+  voerX = random (100, 1000);
+  voerY = random (100, 700);
 };
 
 
@@ -137,20 +140,20 @@ var beweegKogel = function() {
 var beweegSpeler = function() {
     console.log("beweegSpeler");
   if (keyIsDown(39) && spelerX < 1220) { // pijlrechts
-   spelerX = spelerX + 3;
+   spelerX = spelerX + spelerSnelheid;
    console.log("speler:rechts");
   }
 
   if (keyIsDown(37) && spelerX > 60) { // pijllinks
-    spelerX = spelerX - 3;
+    spelerX = spelerX - spelerSnelheid;
   }
 
   if (keyIsDown(40) && spelerY < 660) { // pijlonder
-    spelerY = spelerY + 3;
+    spelerY = spelerY + spelerSnelheid;
   }
 
   if (keyIsDown(38) && spelerY > 60) { //pijlboven
-    spelerY = spelerY - 3;
+    spelerY = spelerY - spelerSnelheid;
   }
 };
 
@@ -168,7 +171,7 @@ var checkVijandGeraakt = function() {
  * bijvoorbeeld door botsing met vijand
  * @returns {boolean} true als speler is geraakt
  */
-var checkSpelerGeraakt = function() {
+var checkSpelerOpVoer = function() {
 
   return false;
 };
@@ -209,6 +212,9 @@ function setup() {
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('blue');
+
+  voerX = random (100, 1000);
+  voerY = random (100, 700);
 }
 
 
@@ -223,7 +229,6 @@ function draw() {
     case SPELEN:
       console.log("SPELEN");
       beweegVijand();
-      beweegKogel();
       beweegSpeler();
       
       if (checkVijandGeraakt()) {
@@ -231,14 +236,14 @@ function draw() {
         // nieuwe vijand maken
       }
       
-      if (checkSpelerGeraakt()) {
-        // leven eraf of gezondheid verlagen
-        // eventueel: nieuwe speler maken
+      if (checkSpelerOpVoer()) {
+           plaatsZebraVoer();
+           spelerSnelheid = spelerSnelheid * 2;
       }
 
       tekenVeld();
       tekenVijand(vijandX, vijandY);
-      tekenKogel(kogelX, kogelY);
+      tekenZebraVoer(voerX, voerY);
       tekenSpeler(spelerX, spelerY);
 
       score = score - 1/50; // elke seconde 1 punt eraf
