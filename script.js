@@ -31,7 +31,7 @@ var kogelY = 0;    // y-positie van kogel
 var vijandX = 50;   // x-positie van vijand
 var vijandY = 100;   // y-positie van vijand
 
-var score = 0; // aantal behaalde punten
+var score = 10; // aantal behaalde punten, telt af met de tijd (seconden)
 
 var imgS=0;
 var imgV=0;
@@ -45,6 +45,7 @@ var imgV=0;
  * Tekent het speelveld
  */
 var tekenVeld = function () {
+  background("green");
   fill("yellow");
   rect(20, 20, width - 2 * 20, height - 2 * 20);
 };
@@ -52,12 +53,17 @@ var tekenVeld = function () {
 /**
  * Tekent eindscherm
  */
-var tekenEindScherm = function () {
-  fill("purple");
+var tekenLeeuwWint = function () {
+  fill("orange");
   textSize(30);
-  text("Game Over, druk op reload om opnieuw te spelen", 100, 400);
+  text("Leeuw Wint, druk op reload om opnieuw te spelen", 100, 400);
 };
 
+var tekenZebraWint = function () {
+  fill("grey");
+  textSize(30);
+  text("Zebra Wint, druk op reload om opnieuw te spelen", 100, 400);
+};
 
 /**
  * Tekent de kogel of de bal
@@ -215,7 +221,7 @@ function draw() {
     console.log("draw");
   switch (spelStatus) {
     case SPELEN:
-        console.log("SPELEN");
+      console.log("SPELEN");
       beweegVijand();
       beweegKogel();
       beweegSpeler();
@@ -235,9 +241,18 @@ function draw() {
       tekenKogel(kogelX, kogelY);
       tekenSpeler(spelerX, spelerY);
 
+      score = score - 1/50; // elke seconde 1 punt eraf
+      textSize(20);
+      fill("white");
+      text("Score: "+round(score), 20, 20);
+      if(score <= 0) {
+          spelStatus = GAMEOVER;
+          tekenZebraWint();
+      }
+
       if (checkGameOver()) {
         spelStatus = GAMEOVER;
-        tekenEindScherm();
+        tekenLeeuwWint();
       }
       break;
   }
