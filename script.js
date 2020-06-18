@@ -172,8 +172,13 @@ var checkVijandGeraakt = function() {
  * @returns {boolean} true als speler is geraakt
  */
 var checkSpelerOpVoer = function() {
-
-  return false;
+    if (((spelerX - voerX) < 35 ) && 
+        ((spelerX - voerX) > -35) &&
+        ((spelerY - voerY) < 35) &&
+        ((spelerY - voerY) > -35)) {
+            return true;
+        }
+    return false;
 };
 
 /**
