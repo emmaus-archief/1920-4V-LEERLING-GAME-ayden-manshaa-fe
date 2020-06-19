@@ -242,11 +242,11 @@ function draw() {
       }
       
       if (checkSpelerOpVoer()) {
-          if (spelerSnelheid < 6)
-        spelerSnelheid = spelerSnelheid + 1;
-        plaatsZebraVoer();
-           
-      }
+          if (spelerSnelheid < 6) {
+            spelerSnelheid = spelerSnelheid + 1;
+            plaatsZebraVoer();
+          }
+        }
 
       tekenVeld();
       tekenVijand(vijandX, vijandY);
