@@ -29,7 +29,7 @@ var spelerSnelheid = 3;
 var voerX = 0;    // x-positie van zebraVoer
 var voerY = 0;    // y-positie van zebraVoer
 
-var vijandX = 50;   // x-positie van vijand leeuw
+var vijandX = 1000;   // x-positie van vijand leeuw
 var vijandY = 100;   // y-positie van vijand leeuw
 
 var score = 30; // aantal behaalde punten, telt af met de tijd (seconden)
@@ -131,7 +131,7 @@ var beweegVijand = function() {
  */
 var plaatsZebraVoer = function() { 
   voerX = random (100, 1000);
-  voerY = random (100, 700);
+  voerY = random (100, 600);
 };
 
 
@@ -142,20 +142,20 @@ var plaatsZebraVoer = function() {
 var beweegSpeler = function() {
     console.log("beweegSpeler");
   if (keyIsDown(39) && spelerX < 1220) { // pijlrechts
-   spelerX = spelerX + 3;
+   spelerX = spelerX + 4;
    console.log("speler:rechts");
   }
 
   if (keyIsDown(37) && spelerX > 60) { // pijllinks
-    spelerX = spelerX - 3;
+    spelerX = spelerX - 4;
   }
 
   if (keyIsDown(40) && spelerY < 660) { // pijlonder
-    spelerY = spelerY + 3;
+    spelerY = spelerY + 4;
   }
 
   if (keyIsDown(38) && spelerY > 60) { //pijlboven
-    spelerY = spelerY - 3;
+    spelerY = spelerY - 4;
   }
 };
 
@@ -247,9 +247,7 @@ function draw() {
       }
       
       if (checkSpelerOpVoer()) {
-          if (spelerSnelheid > 5) {
-            spelerSnelheid = spelerSnelheid + 0
-          } else if(spelerSnelheid < 6) {
+              if(spelerSnelheid < 5) {
               spelerSnelheid = spelerSnelheid + 1;
               plaatsZebraVoer();
           }
@@ -260,6 +258,7 @@ function draw() {
       tekenZebraVoer(voerX, voerY);
       tekenSpeler(spelerX, spelerY);
 
+
       score = score - 1/50; // elke seconde 1 punt eraf
       textSize(20);
       fill("white");
@@ -268,6 +267,15 @@ function draw() {
           spelStatus = GAMEOVER;
           tekenZebraWint();
       }
+      if (spelerSnelheid > 4) {
+            noStroke();
+            fill("yellow")
+            ellipse(voerX, voerY, 21, 21);
+        }
+
+        fill(205,123, 0);
+        textSize(20);
+        text("Zebra = WASD  -  Leeuw = Pijltjes  -  Vermijd de Leeuw tot de tijd op is!", 300, 680);
 
       if (checkGameOver()) {
         spelStatus = GAMEOVER;
