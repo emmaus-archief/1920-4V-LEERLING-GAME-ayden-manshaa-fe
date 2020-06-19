@@ -32,7 +32,7 @@ var voerY = 0;    // y-positie van zebraVoer
 var vijandX = 50;   // x-positie van vijand leeuw
 var vijandY = 100;   // y-positie van vijand leeuw
 
-var score = 10; // aantal behaalde punten, telt af met de tijd (seconden)
+var score = 30; // aantal behaalde punten, telt af met de tijd (seconden)
 
 var imgS=0;
 var imgV=0;
@@ -107,19 +107,19 @@ var tekenSpeler = function(x, y) {
  */
 var beweegVijand = function() {
   if (keyIsDown(68) && vijandX < 1200) { // d
-    vijandX = vijandX + 3;
+    vijandX = vijandX + spelerSnelheid;
   }
 
   if (keyIsDown(65) && vijandX > 60) { // a
-    vijandX = vijandX - 3;
+    vijandX = vijandX - spelerSnelheid;
   }
 
   if (keyIsDown(83) && vijandY < 660) { // s
-    vijandY = vijandY + 3;
+    vijandY = vijandY + spelerSnelheid;
   }
 
   if (keyIsDown(87) && vijandY > 60) { // w
-    vijandY = vijandY - 3;
+    vijandY = vijandY - spelerSnelheid;
   }
 };
 
@@ -140,20 +140,20 @@ var plaatsZebraVoer = function() {
 var beweegSpeler = function() {
     console.log("beweegSpeler");
   if (keyIsDown(39) && spelerX < 1220) { // pijlrechts
-   spelerX = spelerX + spelerSnelheid;
+   spelerX = spelerX + 3;
    console.log("speler:rechts");
   }
 
   if (keyIsDown(37) && spelerX > 60) { // pijllinks
-    spelerX = spelerX - spelerSnelheid;
+    spelerX = spelerX - 3;
   }
 
   if (keyIsDown(40) && spelerY < 660) { // pijlonder
-    spelerY = spelerY + spelerSnelheid;
+    spelerY = spelerY + 3;
   }
 
   if (keyIsDown(38) && spelerY > 60) { //pijlboven
-    spelerY = spelerY - spelerSnelheid;
+    spelerY = spelerY - 3;
   }
 };
 
@@ -172,10 +172,10 @@ var checkVijandGeraakt = function() {
  * @returns {boolean} true als speler is geraakt
  */
 var checkSpelerOpVoer = function() {
-    if (((spelerX - voerX) < 35 ) && 
-        ((spelerX - voerX) > -35) &&
-        ((spelerY - voerY) < 35) &&
-        ((spelerY - voerY) > -35)) {
+    if (((vijandX - voerX) < 35 ) && 
+        ((vijandX - voerX) > -35) &&
+        ((vijandY - voerY) < 35) &&
+        ((vijandY - voerY) > -35)) {
             return true;
         }
     return false;
@@ -242,8 +242,9 @@ function draw() {
       }
       
       if (checkSpelerOpVoer()) {
-           plaatsZebraVoer();
-           spelerSnelheid = spelerSnelheid * 2;
+        spelerSnelheid = spelerSnelheid + 1;
+        plaatsZebraVoer();
+           
       }
 
       tekenVeld();
