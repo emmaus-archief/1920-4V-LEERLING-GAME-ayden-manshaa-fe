@@ -49,6 +49,8 @@ var tekenVeld = function () {
   background("green");
   fill("yellow");
   rect(20, 20, width - 2 * 20, height - 2 * 20);
+  fill("black");
+  text("Zebra = WASD     Leeuw = Pijltjes", 400, 800);
 };
 
 /**
@@ -72,8 +74,8 @@ var tekenZebraWint = function () {
  * @param {number} y y-coördinaat
  */
 var tekenZebraVoer = function(x, y) {
-  fill("black");
-  ellipse(x,y,20,20);
+ var voer = fill("black");
+            ellipse(x,y,20,20);
 }
 
 /**
@@ -215,9 +217,12 @@ function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
 
+  
+
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('blue');
 
+    
   voerX = random (100, 1000);
   voerY = random (100, 700);
 }
@@ -242,11 +247,13 @@ function draw() {
       }
       
       if (checkSpelerOpVoer()) {
-          if (spelerSnelheid < 6) {
-            spelerSnelheid = spelerSnelheid + 1;
-            plaatsZebraVoer();
+          if (spelerSnelheid > 5) {
+            spelerSnelheid = spelerSnelheid + 0
+          } else if(spelerSnelheid < 6) {
+              spelerSnelheid = spelerSnelheid + 1;
+              plaatsZebraVoer();
           }
-        }
+        } 
 
       tekenVeld();
       tekenVijand(vijandX, vijandY);
